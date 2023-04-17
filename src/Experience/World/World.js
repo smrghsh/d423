@@ -61,6 +61,9 @@ export default class World
             this.stepMeshes.push(this.satMesh)
             this.scene.add(this.satMesh)
 
+
+
+
             const b1Image = new Image()
             const b1Texture = this.resources.items.b1
             b1Image.addEventListener('load', () =>
@@ -86,6 +89,14 @@ export default class World
             this.b2Mesh.position.y += 2
             this.stepMeshes.push(this.b2Mesh)
             this.scene.add(this.b2Mesh)
+
+            this.b3DMesh = this.resources.items.b3D.scene
+            this.b3DMesh.children[0].material = new THREE.MeshBasicMaterial({color:'grey', wireframe:true})
+            this.b3DMesh.children[0].geometry.scale(4,4,4)
+            this.b3DMesh.position.x -= 3.4
+            this.b3DMesh.position.z += 1.1
+            this.stepMeshes.push(this.b3DMesh)
+            this.scene.add(this.b3DMesh)
 
 
             // this.spectra = new Spectra()

@@ -34,11 +34,11 @@ export default [
     //     type: 'texture',
     //     path: 'textures/5.png'
     // },
-    // {
-    //     name: 'sushiModel',
-    //     type: 'gltfModel',
-    //     path: 'models/sushi.glb'
-    // } ,
+    {
+        name: 'b3D',
+        type: 'gltfModel',
+        path: 'models/bolinas-3Dstl.glb'
+    } ,
     {
         name: 'b1',
         type: 'texture',
