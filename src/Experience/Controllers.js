@@ -9,6 +9,7 @@ export default class Controllers
     constructor()
     {
         this.experience = new Experience()
+        const experience = this.experience
         this.canvas = this.experience.canvas
         this.sizes = this.experience.sizes
         this.scene = this.experience.scene
@@ -19,9 +20,10 @@ export default class Controllers
         // audio.play();   
         const onSelectStart = function(){
             console.log('trigger pressed!')
-            this.experience.world.next()
+            experience.world.next()
             // audio.play();
         }
+
         this.controller1.addEventListener( 'selectstart', onSelectStart );
         // this.controller1.addEventListener( 'selectend', onSelectEnd );
         this.scene.add( this.controller1 );
