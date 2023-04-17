@@ -39,16 +39,16 @@ export default [
     //     type: 'gltfModel',
     //     path: 'models/sushi.glb'
     // } ,
-    // {
-    //     name: 'wave1',
-    //     type: 'texture',
-    //     path: 'spectra/wave.png'
-    // }, 
-    // {
-    //     name: 'spectrogram1',
-    //     type: 'texture',
-    //     path: 'spectra/spectrogram.jpg'
-    // },   
+    {
+        name: 'b1',
+        type: 'texture',
+        path: 'images/bolinas.jpg'
+    }, 
+    {
+        name: 'sat',
+        type: 'texture',
+        path: 'images/sat.png'
+    },   
     {
         name: 'font',
         type: 'font',

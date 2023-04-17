@@ -10,7 +10,6 @@ import sources from './sources.js'
 import { VRButton } from 'three/examples/jsm/webxr/VRButton.js'
 import Controllers from './Controllers.js'
 
-console.log('hello')
 let instance = null
 
 export default class Experience
@@ -58,12 +57,7 @@ export default class Experience
         this.time = new Time()
         this.lastUpdated = this.time.current
         this.scene = new THREE.Scene()
-
-
-        this.geometry = new THREE.SphereGeometry(1, 32, 32)
-        
-        this.mesh = new THREE.Mesh(this.geometry, this.material)
-        this.scene.add(this.mesh)
+        // this.scene.clearColor("white")
 
         this.resources = new Resources(sources)
         this.world = new World()
