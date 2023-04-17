@@ -2,8 +2,6 @@ import * as THREE from 'three'
 import Experience from './Experience.js'
 import { XRControllerModelFactory } from 'three/examples/jsm/webxr/XRControllerModelFactory.js';
 
-//Samantha
-
 export default class Controllers
 {
     constructor()
@@ -14,6 +12,9 @@ export default class Controllers
         this.sizes = this.experience.sizes
         this.scene = this.experience.scene
         this.renderer = this.experience.renderer
+
+        this.resources = this.experience.resources
+
         
         this.controller1 = this.renderer.instance.xr.getController( 0 );
         // var audio = new Audio('audio/common_voice_en_10.mp3');

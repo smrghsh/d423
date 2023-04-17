@@ -53,6 +53,26 @@ export default [
         name: 'sat',
         type: 'texture',
         path: 'images/sat.png'
+    },  
+    {
+        name: 's1',
+        type: 'texture',
+        path: 'slides/slide1.jpg'
+    },   
+    {
+        name: 's2',
+        type: 'texture',
+        path: 'slides/slide2.jpg'
+    }, 
+    {
+        name: 's3',
+        type: 'texture',
+        path: 'slides/slide3.jpg'
+    }, 
+    {
+        name: 's4',
+        type: 'texture',
+        path: 'slides/slide4.jpg'
     },   
     {
         name: 'font',
