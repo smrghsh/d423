@@ -31,26 +31,7 @@ export default class Experience
         }
         this.material = new THREE.MeshBasicMaterial({color: 'red'})
 
-        if(this.debug.active)
-        {
-            this.debugFolder = this.debug.ui.addFolder('experience')
-            this.debugObject = {
-                sampleBoolean: this.sampleBoolean,
-                sampleNumber: this.sampleNumber,
-                color: 0xff0000
-            }
-            this.debugFolder.add(this.debugObject, 'sampleBoolean').onChange( value =>{
-                this.sampleBoolean = value
-                console.log(this.sampleBoolean)
-            })
-            this.debugFolder.add(this.debugObject, 'sampleNumber').min(0.5).max(15).onChange( value =>{
-                this.sampleNumber = value
-                console.log(this.sampleNumber)
-            })
-            this.debugFolder.add(this.debugObject, 'color').onChange( () =>{
-                this.material.color.set(this.color)
-            })
-        }
+        
 
       
         this.sizes = new Sizes()
@@ -61,6 +42,7 @@ export default class Experience
 
         this.resources = new Resources(sources)
         this.world = new World()
+        const world = this.world
         this.camera = new Camera()
         this.renderer = new Renderer()
 
@@ -73,6 +55,7 @@ export default class Experience
 
 
         this.controllers = new Controllers()
+
 
 
         this.raycaster = new THREE.Raycaster()
@@ -100,6 +83,26 @@ export default class Experience
         {
             this.update()
         })
+
+        if(this.debug.active)
+        {
+            this.debugFolder = this.debug.ui.addFolder('experience')
+            const debugObject = {
+                Next: function(){world.next()}
+            }
+            // this.debugFolder.add(this.debugObject, 'sampleBoolean').onChange( value =>{
+            //     this.sampleBoolean = value
+            //     console.log(this.sampleBoolean)
+            // })
+            // this.debugFolder.add(this.debugObject, 'sampleNumber').min(0.5).max(15).onChange( value =>{
+            //     this.sampleNumber = value
+            //     console.log(this.sampleNumber)
+            // })
+            // this.debugFolder.add(this.debugObject, 'color').onChange( () =>{
+            //     this.material.color.set(this.color)
+            // })
+            this.debugFolder.add(debugObject, 'Next')
+        }
         
         
 

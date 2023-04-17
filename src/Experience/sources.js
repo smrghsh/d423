@@ -45,6 +45,11 @@ export default [
         path: 'images/bolinas.jpg'
     }, 
     {
+        name: 'b2',
+        type: 'texture',
+        path: 'images/bolinas-highlight.jpg'
+    }, 
+    {
         name: 'sat',
         type: 'texture',
         path: 'images/sat.png'

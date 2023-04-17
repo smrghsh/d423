@@ -1,5 +1,7 @@
 import * as THREE from 'three'
 import Experience from '../Experience.js'
+import Debug from '../Utils/Debug.js'
+
 import Environment from './Environment.js'
 import Floor from './Floor.js'
 // import Spectra from './Spectra.js'
@@ -13,19 +15,23 @@ export default class World
         this.sizes = this.experience.sizes
         this.scene = this.experience.scene
         this.resources = this.experience.resources
+        this.debug = new Debug()
         this.floor = new Floor()
 
         this.currentStep = 0
-        this.steps = [
-            {
-                slide: "filename.jpg",
-                content: "THREE Group goes here"
-            },
-            {
-                slide: "filename.jpg",
-                content: "THREE Group goes here"
-            }
-        ]
+        console.log(this.currentStep)
+        this.stepMeshes = []
+        
+        // this.steps = [
+        //     {
+        //         slide: "filename.jpg",
+        //         mesh:
+        //     },
+        //     {
+        //         slide: "filename.jpg",
+        //         content: "THREE Group goes here"
+        //     }
+        // ]
         // this.circles = new Circles()
         // this.hypercube = new Hypercube()
         // Wait for resources
@@ -33,13 +39,13 @@ export default class World
          * Satellite Imagery
          */
         
-
+        this.stars = new Stars()
         this.resources.on('ready', () =>
         {
             // Setup
             console.log('resources ready')
             // this.test = new Test()
-            this.stars = new Stars()
+            
 
             const satImage = new Image()
             const satTexture = this.resources.items.sat
@@ -51,6 +57,8 @@ export default class World
             const satGeo = new THREE.PlaneGeometry(2058/300,1267/300,1,1)
             this.satMesh = new THREE.Mesh(satGeo,satMat)
             this.satMesh.rotation.x -= Math.PI/2
+            this.satMesh.position.z -=1
+            this.stepMeshes.push(this.satMesh)
             this.scene.add(this.satMesh)
 
             const b1Image = new Image()
@@ -64,27 +72,50 @@ export default class World
             equiGeo.scale( - 1, 1, 1 );
             this.b1Mesh = new THREE.Mesh(equiGeo,b1Mat)
             this.b1Mesh.position.y += 2
+            this.stepMeshes.push(this.b1Mesh)
             this.scene.add(this.b1Mesh)
+
+            const b2Image = new Image()
+            const b2Texture = this.resources.items.b2
+            b2Image.addEventListener('load', () =>
+            {
+                b2Texture.needsUpdate = true
+            })
+            const b2Mat = new THREE.MeshBasicMaterial( { map: b2Texture} );
+            this.b2Mesh = new THREE.Mesh(equiGeo,b2Mat)
+            this.b2Mesh.position.y += 2
+            this.stepMeshes.push(this.b2Mesh)
+            this.scene.add(this.b2Mesh)
 
 
             // this.spectra = new Spectra()
             // this.sushi = new Sushi()
+            this.present(this.currentStep)
             
             this.environment = new Environment()
+
         })
     }
     update() {
         // this.circles.update()
     }
-    next() {
-        this.currentStep
-
-    }
+    
     prev() {
 
     }
-    switchVisibilities() {
+    present(stepIndex) {
         // make everything but current step inivisible
+        this.stepMeshes.forEach( (e)=>{
+            e.visible = false
+        })
+        this.stepMeshes[stepIndex].visible = true
+    }
+    next() {
+        this.currentStep++
+        if(this.currentStep > this.stepMeshes.length-1){
+            this.currentStep = 0
+        }
+        console.log(this.present(this.currentStep))
     }
 
 }
