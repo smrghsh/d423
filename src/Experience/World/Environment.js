@@ -9,7 +9,7 @@ export default class Environment
         this.experience = new Experience()
         this.scene = this.experience.scene
         this.resources = this.experience.resources
-        this.debug = this.experience.debug
+        // this.debug = this.experience.debug
         
         
 

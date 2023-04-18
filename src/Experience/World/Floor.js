@@ -8,7 +8,7 @@ export default class Floor{
         this.experience = new Experience()
         this.scene = this.experience.scene
         // this.resources = this.experience.resources
-        this.debug = this.experience.debug
+        // this.debug = this.experience.debug
 
         this.geometry = new THREE.PlaneGeometry( 30, 30 );
         this.horizontalGridMaterial = new THREE.ShaderMaterial({
