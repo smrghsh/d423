@@ -180,6 +180,41 @@ export default class World
             this.stepMeshes.push(this.group4)
             this.scene.add(this.group4)
 
+            
+            const trafficImage = new Image()
+            const trafficTexture = this.resources.items.traffic
+            trafficImage.addEventListener('load', () =>
+            {
+                trafficTexture.needsUpdate = true
+            })
+            const trafficMat = new THREE.MeshBasicMaterial( { map: trafficTexture} );
+            this.trafficMesh = new THREE.Mesh(satGeo,trafficMat)
+            this.trafficMesh.rotation.x -= Math.PI/2
+            this.trafficMesh.position.z -=1
+            this.group5 = new THREE.Group()
+
+            const s5Image = new Image()
+            const s5Texture = this.resources.items.s5
+            s5Image.addEventListener('load', () =>
+            {
+                s5Texture.needsUpdate = true
+            })
+            const s5Mat = new THREE.MeshBasicMaterial( { map: s5Texture} );
+
+            this.s5 = new THREE.Mesh(placardGeo, s5Mat)
+            this.s5.rotation.y -= Math.PI/4
+            this.s5.position.z -= 1
+            this.s5.position.x += 1
+            this.s5.position.y += 1
+
+            this.group5.add(this.trafficMesh)
+            this.group5.add(this.s5)
+
+            this.stepMeshes.push(this.group5)
+            this.scene.add(this.group5)
+
+
+
             this.present(this.currentStep)
             
             this.environment = new Environment()

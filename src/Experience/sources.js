@@ -55,6 +55,11 @@ export default [
         path: 'images/sat.png'
     },  
     {
+        name: 'traffic',
+        type: 'texture',
+        path: 'images/traffic.png'
+    },  
+    {
         name: 's1',
         type: 'texture',
         path: 'slides/slide1.jpg'
@@ -73,6 +78,11 @@ export default [
         name: 's4',
         type: 'texture',
         path: 'slides/slide4.jpg'
+    }, 
+    {
+        name: 's5',
+        type: 'texture',
+        path: 'slides/slide5.jpg'
     },   
     {
         name: 'font',
