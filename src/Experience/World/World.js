@@ -148,10 +148,15 @@ export default class World
             this.scene.add(this.group3)
 
             this.b3DMesh = this.resources.items.b3D.scene
-            this.b3DMesh.children[0].material = new THREE.MeshBasicMaterial({color:'grey', wireframe:true})
+            this.b3DMesh2 = this.b3DMesh.clone()
+            this.b3DMesh.children[0].material = new THREE.MeshBasicMaterial({color:'white', wireframe:true})
+            this.b3DMesh2.children[0].material = new THREE.MeshBasicMaterial({color:'grey', wireframe:false})
             this.b3DMesh.children[0].geometry.scale(4,4,4)
             this.b3DMesh.position.x -= 3.4
             this.b3DMesh.position.z += 1.1
+            // this.b3DMesh2.children[0].geometry.scale(4,4,4)
+            this.b3DMesh2.position.x -= 3.4
+            this.b3DMesh2.position.z += 1.1
 
             const s4Image = new Image()
             const s4Texture = this.resources.items.s4
@@ -166,8 +171,11 @@ export default class World
             this.s4.position.z -= 1
             this.s4.position.x += 1
             this.s4.position.y += 1
+
             this.group4 = new THREE.Group()
             this.group4.add(this.b3DMesh)
+            this.group4.add(this.b3DMesh2)
+
             this.group4.add(this.s4)
             this.stepMeshes.push(this.group4)
             this.scene.add(this.group4)
