@@ -1,7 +1,4 @@
 # xr
-In progress diagnostic tool for WebXR based single-user VR applications.
-
-Intended as way for a research team out of the [SET Lab](https://setlab.soe.ucsc.edu/about/) to practice co-contributing to VR application and test technical approaches.
 
 ## Testing and Development
 `npm install` to install required dependencies
